@@ -80,9 +80,9 @@
 <?php
 
 
-noRepetir = [];
+$noRepetir = [];
 
-
+$hola
 
 $radar = [
     ["nombre" => $_GET['nombre1'], "altura" => (float)$_GET['altura1'], "correo" => $_GET['correo1']],
