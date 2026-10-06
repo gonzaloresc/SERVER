@@ -13,16 +13,6 @@
 
 <p>Ej 9 arrays</p>
 
-<form action="arrays9.php" method="get">
-    <p><label for="nombre1">Nombre entrenador 1: </label></p>
-    <input type="text" name="nombre1" id="nombre1">
-    
-    <br><br>
-    <input type="submit">
-</form>
-
-
-
 <?php
 
 
@@ -49,7 +39,6 @@ foreach ($radar as &$elemento) {
 }
 
 echo "<table>";
-print_r($radar);
 foreach ($radar as $elemento) {
     sort($elemento);
     echo "<tr><td style='color: green'>".$elemento[0]."<td>";
