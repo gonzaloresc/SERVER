@@ -22,8 +22,6 @@
 </form>
 
 
-</body>
-</html>
 
 <?php
 
@@ -40,20 +38,20 @@ $radar = [
     [0,0,0,0,0,0,0,0,0]
 ];
 
-foreach ($radar as $elemento) {
-    foreach ($elemento as $e) {
-        $r = rand(100,999);
-        if(!in_array($r,$noRepetir)){
-            $e = $r;
-            $noRepetir[] = $r;
-        }
+foreach ($radar as &$elemento) {
+    foreach ($elemento as &$e) {
+        do{
+            $r = rand(100,999);
+        } while (in_array($r,$noRepetir));
+        $e = $r;
+        $noRepetir[] = $r;
     }
 }
 
 echo "<table>";
-
+print_r($radar);
 foreach ($radar as $elemento) {
-    array_sort($elemento);
+    sort($elemento);
     echo "<tr><td style='color: green'>".$elemento[0]."<td>";
     for ($i = 1; $i < (count($elemento))-1; $i++) {
         echo"<td style='color: black'>".$elemento[$i]."</td>";
@@ -64,3 +62,8 @@ foreach ($radar as $elemento) {
 
 
 echo "</table>";
+
+
+?>
+</body>
+</html>
