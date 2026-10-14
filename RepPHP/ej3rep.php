@@ -14,13 +14,15 @@
 
 $oleadas= $_GET['oleadas'];
 $oroNecesario= $_GET['oroNecesario'];
-$acumulado;
+$acumulado = 0;
+$cannon = "no";
 
 const CANNON = 60;
 const NORMAL = 105;
 
 
 echo "<table>";
+echo "<caption>Primera Forma</caption>";
 echo "<tr>
         <th>oleada</th>
         <th>Cañon</th>
@@ -28,19 +30,58 @@ echo "<tr>
         <th>Acumulado</th>
     </tr>";
 for($i = 1; $i <= $oleadas; $i++){
-    
+
+    if ($i % 3 == 0){
+        $cannon = "si";
+        $oro = NORMAL + CANNON;
+    } else {
+        $cannon = "no";
+        $oro = NORMAL;
+    }
+
+    $acumulado += $oro;
+
+    echo "<tr>";
+    echo "<td> $i </td>";
+    echo "<td> $cannon </td>";
+    echo "<td> $oro </td>";
+    echo "<td> $acumulado </td>";
+    echo "</tr>";
 }
 
+$acumulado = 0;
+$indice = 0;
 
-
-
-
+echo "<table>";
+echo "<caption>Segunda Forma</caption>";
 echo "<tr>
-        <td>$vida</td>
-        <td>$disponible</td>
-        <td>$respuesta</td>
+        <th>oleada</th>
+        <th>Cañon</th>
+        <th>Oro</th>
+        <th>Acumulado</th>
     </tr>";
-echo "</table>";
+while($acumulado < $oroNecesario){
+
+    
+    $indice++;
+
+    if ($indice % 3 == 0){
+        $cannon = "si";
+        $oro = NORMAL + CANNON;
+    } else {
+        $cannon = "no";
+        $oro = NORMAL;
+    }
+
+    $acumulado += $oro;
+
+    echo "<tr>";
+    echo "<td> $indice </td>";
+    echo "<td> $cannon </td>";
+    echo "<td> $oro </td>";
+    echo "<td> $acumulado </td>";
+    echo "</tr>";
+}
 
 ?>
 </body>
