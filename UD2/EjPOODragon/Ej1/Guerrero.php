@@ -6,6 +6,7 @@ class Guerrero {
     private int $energia;
     private int $fuerza;
 
+    private bool $judia;
     const ENERGIA_MAXIMA = 100;
 
     public function __construct(string $nombre, int $fuerza){
@@ -52,8 +53,13 @@ class Guerrero {
     }
 
     public function comerJudiaMagica(){
-        if($this->energia != ENERGIA_MAXIMA){
-        $this->energia = ENERGIA_MAXIMA;
+        if($judia){
+            if($this->energia != ENERGIA_MAXIMA){
+            $this->energia = ENERGIA_MAXIMA;
+            echo "La energia ya está al maximo";
+            }
+
+
         }
         
     }
