@@ -6,7 +6,7 @@ class Guerrero {
     private int $energia;
     private int $fuerza;
 
-    private bool $judia;
+    private bool $judia = true;
     const ENERGIA_MAXIMA = 100;
 
     public function __construct(string $nombre, int $fuerza){
@@ -21,7 +21,7 @@ class Guerrero {
             $this->fuerza = $fuerza;
         }
 
-        $this->energia = ENERGIA_MAXIMA;
+        $this->energia = self::ENERGIA_MAXIMA;
     }      
     
     public function entrenar(int $horas){
@@ -53,23 +53,30 @@ class Guerrero {
     }
 
     public function comerJudiaMagica(){
-        if($judia){
-            if($this->energia != ENERGIA_MAXIMA){
-            $this->energia = ENERGIA_MAXIMA;
-            echo "La energia ya está al maximo";
+        if($this->judia){
+            if($this->energia != self::ENERGIA_MAXIMA){
+                $this->energia = self::ENERGIA_MAXIMA;
+                $this->judia = false;
+                return "La energia ya está al maximo";
+            } else {
+                return "La energia ya está al máximo";
             }
-
-
+            
+        } else {
+            return "No tienes una judia mágica";
         }
-        
     }
 
-
-
+    public function mostrarEstado(){
+        $resultado = "Nombre: $this->nombre Energia: $this->energia Fuerza: $this->fuerza"; 
+        if ($this->judia){
+            $resultado .= " Tiene judia";
+        } else {
+            $resultado .= " No tiene judia";
+        }
+        return $resultado;
+    }
 }
-
-
-
 
 
 ?>
