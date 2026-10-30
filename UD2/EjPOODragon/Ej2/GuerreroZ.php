@@ -22,7 +22,19 @@ class GuerreroZ {
         $this->salud = 100;
     }
 
-    
+    public function recibirDanio(int $cantidad){
+        if($cantidad > 0){
+            if ($this->salud - $cantidad >= 0 ){
+
+                $this->salud -= $cantidad;
+                
+            }
+        }
+    }
+
+    public function estaEnPie(){
+
+    }
 
 
 }
