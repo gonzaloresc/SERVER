@@ -10,7 +10,7 @@ class Guerrero {
     const ENERGIA_MAXIMA = 100;
 
     public function __construct(string $nombre, int $fuerza){
-        if(empty($nombre)){
+        if(empty(trim($nombre))){
             throw new InvalidArgumentException();
         }else{
             $this->nombre = $nombre;

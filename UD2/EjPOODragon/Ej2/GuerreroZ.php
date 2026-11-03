@@ -32,9 +32,39 @@ class GuerreroZ {
         }
     }
 
-    public function estaEnPie(){
-
+    public function estaEnPie():bool{
+        if ($this->salud <= 0){
+            return false;
+        } else{
+            return true;
+        }
     }
 
 
+    public function getNombre(): string{
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): void{
+        $this->nombre = $nombre;
+    }
+
+    public function getSalud(): int{
+        return $this->salud;
+    }
+
+    public function setSalud(int $salud): void{
+        $this->salud = $salud;
+    }
+
+    public function getpoderAtaque(): int{
+        return $this->poderAtaque;
+    }
+
+    public function setpoderAtaque(int $poderAtaque): void{
+        $this->poderAtaque = $poderAtaque;
+    }
+
 }
+
+?>
