@@ -5,8 +5,16 @@ if(!isset($_SESSION["serie"])){
     $_SESSION["serie"]=[];
 }
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    array_push($_SESSION["serie"],$_POST["serie"]);
-    var_dump($_SESSION["serie"]);
+
+    $_SESSION["nombre"] = $_POST["nombre"];
+    var_dump($_SESSION["nombre"]);
+
+    $_SESSION["peli"] = $_POST["peli"];
+    var_dump($_SESSION["peli"]);
+
+    $_SESSION["cantidad"] = $_POST["cantidad"];
+    var_dump($_SESSION["cantidad"]);
+
 }
 
 ?>
@@ -43,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     </form>
 
     <br>
-    <a href="pendientes.php">IR A LA LISTA</a>
+    <a href="resumen.php">IR AL RESUMEN</a>
 
 <?php
 

@@ -40,8 +40,16 @@ echo '</ol>';
 echo '</form>';
 
 echo "<br>";
-echo "<button type='submit' id='vaciar' name='vaciar'>";
+
+echo "<form method='post'>";
+
+echo "<button type='submit' id='vaciar' name='vaciar'>Vaciar</button>";
+
+echo "</form>";
 
 ?>
+
+<a href="series.php">IR A LAS SERIES</a>
+
 </body>
 </html>
