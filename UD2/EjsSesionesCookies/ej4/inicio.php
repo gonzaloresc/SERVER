@@ -1,32 +1,19 @@
 <?php
 
+    $mensaje = "Bienvenido a la página!";
+
     if(!isset($_COOKIE["pagina"])){
-        $mensaje = "Bienvenido a la página!!";
+        setcookie("pagina","Bienvenido a la página!",(time()+ (60*60*24*7)));
+        $mensaje = "Bienvenido a la página!";
     } else {
-        if($_COOKIE["pagina"] === "anime"){
-            $mensaje = "Tu ultima página fue anime";
-        } elseif($_COOKIE["pagina"] === "comics"){
-            $mensaje = "Tu ultima página fue comics";
-        } elseif($_COOKIE["pagina"] === "videojuegos"){
-            $mensaje = "Tu ultima página fue videojuegos";
+        if ($_COOKIE["pagina"] != "Bienvenido a la página!" ){
+            $mensaje = "<p>Ultima pagina vista: </p> <a href=".$_COOKIE['pagina'].".php>".$_COOKIE['pagina']."</a>";
         } else {
-            $mensaje = "Bienvenido a la página!!";
+            $mensaje = "Bienvenido a la página!";
         }
     }
     
-    
-    if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pagina"])){
-        setcookie("pagina",$_POST["pagina"],(time()+ (60*60*24*7)));
 
-        if($_POST["pagina"] === "anime"){
-            header("Location: anime.php");
-        } elseif($_POST["pagina"] === "comics"){
-            header("Location: comics.php");
-        } else {
-            header("Location: videojuegos.php");
-        }
-
-    }
 ?>
 
 <!DOCTYPE html>
@@ -37,18 +24,14 @@
     <title>Ej 4</title>
 </head>
 <body>
-    
-    <h1><?php $mensaje ?></h1>
 
-    <form action="post">
+    <?php echo "$mensaje" ?>
 
-        <button type="submit" id="anime" name="pagina" value="anime">Anime</button>
-        <button type="submit" id="comics" name="pagina" value="comics">Comics</button>
-        <button type="submit" id="videojuegos" name="pagina" value="videojuegos">videojuegos</button>
+    <br>
 
-    </form>
-
-
+    <a href="anime.php">Anime</a>      
+    <a href="comics.php">Comics</a>
+    <a href="videojuegos.php">Videojuegos</a>
 
 </body>
 </html>
