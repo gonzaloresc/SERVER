@@ -48,9 +48,11 @@ echo "<form method='post'>";
 
     echo "<label></label>";
     echo "<select id='filtro' name='filtro'>";
+    echo "<option value='Todos'>Todos</option>";
     while($fila=$consulta4->fetch(PDO::FETCH_ASSOC)){
-        echo "<option value=".$fila['id'].">".$fila['id']."</option>";
+        echo "<option value=".$fila['tipo'].">".$fila['tipo']."</option>";
     }
+    echo "<option value='Volador'>Volador</option>";
     echo "</select><br>";
 
 
@@ -69,10 +71,24 @@ echo "</form>";
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
 
-        if(isset($_POST['buscador'])){
+        if(isset($_POST['buscador']) && isset($_POST['filtro'])){
+
+            if(str_contains($fila['nombre'],$_POST['buscador']) && (str_contains($fila['tipo'],$_POST['filtro']) || str_contains($fila['tipo2'],$_POST['filtro']) )){
+                echo "<li>".$fila['id'].", <a href=Ejercicios.php?id=".$fila['id'].">".$fila['nombre']. "</a></li>";
+            }
+
+        } elseif(isset($_POST['buscador'])){
+
             if(str_contains($fila['nombre'],$_POST['buscador'])){
                 echo "<li>".$fila['id'].", <a href=Ejercicios.php?id=".$fila['id'].">".$fila['nombre']. "</a></li>";
             }
+
+        } elseif(isset($_POST['filtro'])){
+
+            if(str_contains($fila['tipo'],$_POST['filtro']) || str_contains($fila['tipo2'],$_POST['filtro'])){
+                echo "<li>".$fila['id'].", <a href=Ejercicios.php?id=".$fila['id'].">".$fila['nombre']. "</a></li>";
+            }
+
         } else {
             echo "<li>".$fila['id'].", <a href=Ejercicios.php?id=".$fila['id'].">".$fila['nombre']. "</a></li>";
         }
